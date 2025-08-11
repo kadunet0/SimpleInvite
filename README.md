@@ -1,140 +1,195 @@
-# SimplyInvite
+# SimplyInvite - Plataforma de Conexão entre Talentos e Empresas
 
-## 📌 Visão Geral
+## 📋 Visão Geral do Projeto
 
-O **SimplyInvite** é uma plataforma que conecta **jovens talentos**, **gestores** e **profissionais de RH**, permitindo recrutamento, avaliação e acompanhamento por meio de **projetos, vídeos e entrevistas**.  
-O sistema possui **frontend moderno** em React + Vite e **backend robusto** em Java Spring Boot, com persistência em PostgreSQL, pronto para execução local ou via Docker.
+SimplyInvite é uma plataforma inovadora que conecta jovens talentos, gestores e profissionais de RH, facilitando o processo de recrutamento através de vídeos de apresentação, projetos e entrevistas. A plataforma oferece uma experiência completa para todos os perfis de usuários, com funcionalidades específicas para cada um.
 
----
+## 🚀 Início Rápido
+
+### Pré-requisitos
+
+- Docker Desktop
+- Node.js (para desenvolvimento local)
+- Git
+
+### Executando com Docker (Recomendado)
+
+```bash
+# Clone o repositório
+git clone <URL_DO_REPOSITÓRIO>
+cd simplyinvite-showcase-page
+
+# Inicie os containers
+docker-compose up --build
+```
+
+Após a execução, acesse:
+
+- Frontend: http://localhost
+- PostgreSQL: localhost:5432
+  - Usuário: postgres
+  - Senha: podtgres
+  - Banco: simplyinvite
+
+### Desenvolvimento Local
+
+```bash
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+## 🔑 Credenciais de Desenvolvimento
+
+Para testar a aplicação, use:
+
+| Perfil        | Email              | Senha    |
+| ------------- | ------------------ | -------- |
+| Jovem Talento | jovem@example.com  | senha123 |
+| RH            | rh@example.com     | senha123 |
+| Gestor        | gestor@example.com | senha123 |
 
 ## 🛠️ Tecnologias
 
-### Frontend
-- React + TypeScript
-- Vite
-- Tailwind CSS
-- shadcn-ui
-- Lucide Icons
-- Axios
-- React Router
-- React Hook Form + Zod
-- Sonner (notificações)
+- **Frontend**
 
-### Backend
-- Java 17 + Spring Boot 3
-- Spring Data JPA
-- Spring Security + JWT
-- PostgreSQL
-- H2 (para testes)
-- Maven
+  - React
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+  - shadcn-ui
+  - Lucide Icons
+  - date-fns
 
-### DevOps
-- Docker + Docker Compose
+- **Backend**
+  - Node.js
+  - Express
+  - PostgreSQL
+  - Supabase (autenticação)
+  - Nodemailer (sistema de e-mails)
 
----
+## 📁 Estrutura do Projeto
 
-## 📂 Estrutura de Pastas
+```
+src/
+├── components/     # Componentes React reutilizáveis
+├── pages/         # Páginas da aplicação
+│   ├── talent/    # Páginas específicas para jovens talentos
+│   ├── manager/   # Páginas específicas para gestores
+│   └── hr/        # Páginas específicas para RH
+├── servicos/      # Serviços de API e lógica de negócios
+│   ├── api.ts     # Configuração base da API
+│   ├── entrevistas.ts # Serviço de gerenciamento de entrevistas
+│   ├── jovem.ts   # Serviços específicos para jovens
+│   ├── gestor.ts  # Serviços específicos para gestores
+│   └── rh.ts      # Serviços específicos para RH
+├── contexts/      # Contextos React (AuthContext, etc.)
+├── hooks/         # Hooks personalizados
+└── utils/         # Funções utilitárias
+```
 
-simplyinvite-showcase-page/
-├── backend/ # Backend Java Spring Boot
-│ ├── modelos/ # Entidades JPA
-│ ├── repositorios/ # Repositórios JPA
-│ ├── servicos/ # Regras de negócio
-│ ├── controladores/ # Controllers REST
-│ ├── dtos/ # Objetos de transferência
-│ └── seguranca/ # JWT e configs de segurança
-├── frontend/ # Frontend React + Vite
-│ ├── components/ # Componentes reutilizáveis
-│ ├── pages/ # Páginas por perfil (talento, gestor, RH)
-│ ├── contexts/ # Contextos (ex.: Auth)
-│ ├── hooks/ # Hooks customizados
-│ └── servicos/ # Serviços API
-├── docker-compose.yml
-└── README.md
+## ✨ Funcionalidades Principais
 
----
+### Para Jovens Talentos
 
-## ✨ Funcionalidades
+- Criação de perfil completo com informações acadêmicas e profissionais
+- Envio de vídeos de apresentação
+- Submissão de projetos para avaliação
+- Visualização de feedbacks de gestores e RH
+- Agendamento e gerenciamento de entrevistas
+- Recebimento de notificações por e-mail com possibilidade de resposta direta
 
-### Jovens Talentos
-- Criação de perfil com dados acadêmicos e profissionais
-- Envio de vídeos de apresentação e projetos
-- Visualização de feedbacks
+### Para Gestores
+
+- Avaliação de perfis e projetos de jovens talentos
+- Fornecimento de feedback detalhado
 - Agendamento de entrevistas
+- Sistema de medalhas para classificação de talentos
 
-### Gestores
-- Avaliação de talentos e projetos
-- Feedback detalhado
-- Sistema de medalhas
-- Agendamento de entrevistas
+### Para RH
 
-### RH
 - Gestão de processos seletivos
 - Avaliação preliminar de candidatos
-- Acompanhamento de feedbacks
+- Acompanhamento de feedback dos gestores
 - Organização de entrevistas
 
----
+## 🔄 Atualizações Recentes
 
-## 🚀 Como Executar
+### Sistema de Entrevistas
 
-### Usando Docker (recomendado)
-```bash
-git clone <URL_DO_REPOSITORIO>
-cd simplyinvite-showcase-page
-docker-compose up --build
-Acesse:
+- Correção de URLs da API para agendamento de entrevistas
+- Implementação de armazenamento local (localStorage) como fallback quando a API falha
+- Melhoria no tratamento de erros e logs para depuração
+- Adição de notificações em tempo real para novas entrevistas agendadas
 
-Frontend: http://localhost
+### Página de Convites do Jovem
 
-Backend: http://localhost:8080
+- Melhorias na exibição de entrevistas agendadas
+- Implementação de recuperação de dados do localStorage quando a API não está disponível
+- Adição de logs detalhados para facilitar a depuração
+- Melhoria na interface do usuário para melhor experiência
 
-PostgreSQL: localhost:5432 (user: postgres | pass: jonas1385)
+### Sistema de Feedback
 
-Desenvolvimento Local
-Backend
+- Implementação de visualização completa de feedbacks na página de submissões
+- Organização de feedbacks usando componente Accordion para melhor visualização
+- Separação clara entre feedbacks de gestores e de RH
+- Melhoria na apresentação visual das medalhas recebidas
 
-bash
-Copiar
-Editar
-cd backend
-mvnw spring-boot:run
-Frontend
+### Sistema de Comunicação
 
-bash
-Copiar
-Editar
-cd frontend
-npm install
-npm run dev
-🔑 Credenciais de Teste
-Perfil	Email	Senha
-Jovem Talento	jovem@example.com	senha123
-RH	rh@example.com	senha123
-Gestor	gestor@example.com	senha123
+- Implementação de sistema de e-mail para notificações importantes
+- Possibilidade de resposta direta por e-mail sem necessidade de acessar a plataforma
+- Tokens de segurança para validação de respostas
+- Templates responsivos para e-mails em formato HTML e texto
 
-⚙️ Variáveis de Ambiente
-Arquivo .env:
+## 🚨 Solução de Problemas
 
-ini
-Copiar
-Editar
-PORT=8080
-DB_HOST=postgres
-DB_USER=postgres
-DB_PASS=jonas1385
-DB_NAME=simplyinvite
-JWT_SECRET=simplyinvite_secret_key_12345
-🤝 Contribuindo
-Fork do repositório
+### Problemas Comuns
 
-Crie uma branch: git checkout -b feature/nova-feature
+1. **Porta 80 em uso**
 
-Commit: git commit -m "Descrição"
+   - Verifique se não há outro serviço usando a porta 80
+   - Altere a porta no docker-compose.yml se necessário
 
-Push: git push origin feature/nova-feature
+2. **Porta 5432 em uso**
 
-Abra um Pull Request
+   - Verifique se não há outra instância do PostgreSQL rodando
+   - Altere a porta no docker-compose.yml se necessário
 
-📧 Suporte
-E-mail: suporte@simplyinvite.com
+3. **Erro de permissão**
+
+   - Execute o Docker Desktop como administrador
+   - Verifique as permissões das pastas do projeto
+
+4. **Problemas com entrevistas não aparecendo**
+   - Verifique o localStorage do navegador
+   - Limpe o cache e recarregue a página
+
+## 📝 Notas de Produção
+
+Para ambiente de produção:
+
+1. Configure as variáveis de ambiente:
+
+   - `VITE_SUPABASE_URL`: URL do seu projeto Supabase
+   - `VITE_SUPABASE_ANON_KEY`: Chave anônima do seu projeto Supabase
+   - `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS`: Configurações do servidor SMTP
+
+2. Ajuste as configurações de segurança no `nginx.conf`
+
+3. Configure backups regulares do banco de dados
+
+## 🤝 Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
+
+## 📞 Suporte
+
+Para suporte, entre em contato através do e-mail: suporte@simplyinvite.com
