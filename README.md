@@ -52,10 +52,6 @@ simplyinvite-showcase-page/
 ├── docker-compose.yml
 └── README.md
 
-yaml
-Copiar
-Editar
-
 ---
 
 ## ✨ Funcionalidades
